@@ -30,10 +30,9 @@ else:
             img_array = np.expand_dims(img_array, axis=-1)  # Afegim canal
 
             prediction = model.predict(img_array)
-            predicted_digit = np.argmax(prediction)
-            confidence = np.max(prediction)
+            predicted_digit = int(np.argmax(prediction))
 
-            st.success(f"✏️ El model creu que és un **{predicted_digit}** amb una confiança del {confidence*100:.2f}%")
+            st.success(f"✏️ Aquesta imatge és el número **{predicted_digit}**")
 
         except UnidentifiedImageError:
             st.error("❌ No s'ha pogut llegir la imatge. Si us plau, puja un arxiu .jpg o .png vàlid.")
